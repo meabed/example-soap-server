@@ -45,7 +45,7 @@ class TestSoap
      */
     public function Login($param = [])
     {
-        if (count($param) != 2) {
+        if (count($param) != 2 || !$param[0] || $param[1]) {
             throw new \SoapFault('1001EC', 'Invalid params');
         }
         $rs = new LoginResponse();
