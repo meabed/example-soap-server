@@ -12,7 +12,7 @@ $soap = new Zend\Soap\Server($siteURL . 'wsdl.php');
 $soap->setClass(TestSoap::class);
 $soap->setReturnResponse(true);
 $response = $soap->handle();
-$response = str_ireplace(['<?xml version="1.0" ?>'], '', $response);
+$response = str_ireplace(['<?xml version="1.0" ?>', '<?xml version="1.0" encoding="UTF-8"?>'], '', $response);
 
 $time_end = microtime(true);
 $eTime = ($time_end - $time_start);
@@ -22,7 +22,8 @@ $uuid4 = \Ramsey\Uuid\Uuid::uuid4();
 function makeResult($uuid4, $eTime, $response)
 {
 
-    $result = '<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding" >
+    $result = '<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding" >
 <SOAP-ENV:Header>
 <ResponseHeader>
 <requestId>' . $uuid4 . '</requestId>
