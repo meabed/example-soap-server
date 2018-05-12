@@ -14,8 +14,6 @@ $soap->setReturnResponse(true);
 
 $response = $soap->handle();
 
-$response = str_ireplace(['<?xml version="1.0"?>', '<?xml version="1.0" encoding="UTF-8"?>'], '', $response);
-
 
 if (!headers_sent()) {
     header('Content-Type: application/xml');
