@@ -33,9 +33,7 @@ class TestSoap
 
         $rsArr = ['Reply' => join(' ', [$firstName, $lastName])];
 
-        $xml = new SimpleXMLElement('<root/>');
-        array_walk_recursive($rsArr, [$xml, 'addChild']);
-        return $xml->asXML();
+        return \Spatie\ArrayToXml\ArrayToXml::convert($rsArr);
     }
 
 
@@ -52,9 +50,7 @@ class TestSoap
         }
         $rsArr = ['Reply' => join($param) . '-loggedin'];
 
-        $xml = new SimpleXMLElement('<root/>');
-        array_walk_recursive($rsArr, [$xml, 'addChild']);
-        return $xml->asXML();
+        return \Spatie\ArrayToXml\ArrayToXml::convert($rsArr);
     }
 
     /**
@@ -72,9 +68,7 @@ class TestSoap
         }
         $rsArr = ['Reply' => 'Hello ' . $name];
 
-        $xml = new SimpleXMLElement('<root/>');
-        array_walk_recursive($rsArr, [$xml, 'addChild']);
-        return $xml->asXML();
+        return \Spatie\ArrayToXml\ArrayToXml::convert($rsArr);
     }
 
 }
