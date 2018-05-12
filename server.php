@@ -33,6 +33,7 @@ function makeResult($uuid4, $eTime, $response)
 </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>';
 
+    return $result;
 
     // pretty xml
     $dom = new \DOMDocument();
@@ -44,5 +45,6 @@ function makeResult($uuid4, $eTime, $response)
 
 }
 
+header('Content-Type: application/xml');
 echo makeResult($uuid4->toString(), $eTime, $response);
 exit;
