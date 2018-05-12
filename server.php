@@ -12,6 +12,7 @@ $soap = new Zend\Soap\Server($siteURL . 'wsdl.php');
 $soap->setClass(TestSoap::class);
 $soap->setReturnResponse(true);
 $response = $soap->handle();
+$response = str_ireplace(['<?xml version="1.0" ?>'], '', $response);
 
 $time_end = microtime(true);
 $eTime = ($time_end - $time_start);
@@ -32,7 +33,7 @@ function makeResult($uuid4, $eTime, $response)
 ' . $response . '
 </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>';
-
+    return $result;
     // pretty xml
     $dom = new \DOMDocument();
     $dom->preserveWhiteSpace = false;
