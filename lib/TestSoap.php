@@ -31,7 +31,11 @@ class TestSoap
             throw new \SoapFault('1001EC', 'Invalid params');
         }
 
-        return join(' ', [$firstName, $lastName]);
+        $rsArr = ['Reply' => join(' ', [$firstName, $lastName])];
+
+        $xml = new SimpleXMLElement('<root/>');
+        array_walk_recursive($rsArr, [$xml, 'addChild']);
+        return $xml->asXML();
     }
 
 
@@ -46,8 +50,11 @@ class TestSoap
         if (count($param) != 2) {
             throw new \SoapFault('1001EC', 'Invalid params');
         }
+        $rsArr = ['Reply' => join($param) . '-loggedin'];
 
-        return join($param) . '-loggedin';
+        $xml = new SimpleXMLElement('<root/>');
+        array_walk_recursive($rsArr, [$xml, 'addChild']);
+        return $xml->asXML();
     }
 
     /**
@@ -63,7 +70,11 @@ class TestSoap
         if (!$name) {
             throw new \SoapFault('1001EC', 'Invalid params');
         }
-        return 'Hello ' . $name;
+        $rsArr = ['Reply' => 'Hello ' . $name];
+
+        $xml = new SimpleXMLElement('<root/>');
+        array_walk_recursive($rsArr, [$xml, 'addChild']);
+        return $xml->asXML();
     }
 
 }
