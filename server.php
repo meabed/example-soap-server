@@ -14,15 +14,18 @@ $soap->setReturnResponse(true);
 $response = $soap->handle();
 
 $time_end = microtime(true);
-$execution_time = ($time_end - $time_start);
+$eTime = ($time_end - $time_start);
 
 $uuid4 = \Ramsey\Uuid\Uuid::uuid4();
 
-$result = '<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding" >
+function makeResult($uuid4, $eTime, $response)
+{
+
+    $result = '<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding" >
 <SOAP-ENV:Header>
 <ResponseHeader>
-<requestId>' . $uuid4->toString() . '</requestId>
-<responseTime>' . $execution_time . '</responseTime>
+<requestId>' . $uuid4 . '</requestId>
+<responseTime>' . $eTime . '</responseTime>
 </ResponseHeader>
 </SOAP-ENV:Header>
 <SOAP-ENV:Body>
@@ -31,12 +34,15 @@ $result = '<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/en
 </SOAP-ENV:Envelope>';
 
 
-// pretty xml
-$dom = new \DOMDocument();
-$dom->preserveWhiteSpace = false;
-$dom->loadXML($result);
-$dom->formatOutput = true;
+    // pretty xml
+    $dom = new \DOMDocument();
+    $dom->preserveWhiteSpace = false;
+    $dom->loadXML($result);
+    $dom->formatOutput = true;
 
-echo $dom->saveXml();
+    return $dom->saveXml();
 
+}
+
+echo makeResult($uuid4->toString(), $eTime, $response);
 exit;
