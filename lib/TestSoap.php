@@ -33,14 +33,14 @@ class TestSoap
 
         $rsArr = ['Fullname' => join(' ', [$firstName, $lastName])];
 
-        return \Spatie\ArrayToXml\ArrayToXml::convert($rsArr, 'getFullname');
+        return $rsArr;
     }
 
 
     /**
      * Generate webservice session from login info
      * @param array $param login param [username,password]
-     * @return string
+     * @return mixed
      * @throws SoapFault
      */
     public function login($param = [])
@@ -50,14 +50,14 @@ class TestSoap
         }
         $rsArr = ['SessionId' => join('', $param) . '-loggedin'];
 
-        return \Spatie\ArrayToXml\ArrayToXml::convert($rsArr, 'login');
+        return $rsArr;
     }
 
     /**
      * Say Hello!
      * @param string $session session from login method
      * @param string $name name
-     * @return string
+     * @return mixed
      * @throws SoapFault
      */
     public function sayHello($session, $name)
@@ -68,7 +68,7 @@ class TestSoap
         }
         $rsArr = ['Text' => 'Hello ' . $name];
 
-        return \Spatie\ArrayToXml\ArrayToXml::convert($rsArr, 'sayHello');
+        return $rsArr;
     }
 
 }
