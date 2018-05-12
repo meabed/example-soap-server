@@ -71,6 +71,22 @@ class TestSoap
         return $rs;
     }
 
+    /**
+     * Echo text!
+     * @param string $session session from login method
+     * @param string $text $text
+     * @return string
+     * @throws SoapFault
+     */
+    public function echoText($session, $text)
+    {
+        $this->validateSession($session);
+        if (!$text) {
+            throw new \SoapFault('1001EC', 'Invalid params');
+        }
+        return $text;
+    }
+
 }
 
 class FaultResponse
