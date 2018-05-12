@@ -31,9 +31,9 @@ class TestSoap
             throw new \SoapFault('1001EC', 'Invalid params');
         }
 
-        $rsArr = ['Reply' => ['Fullname' => join(' ', [$firstName, $lastName])]];
+        $rsArr = ['Fullname' => join(' ', [$firstName, $lastName])];
 
-        return \Spatie\ArrayToXml\ArrayToXml::convert($rsArr);
+        return \Spatie\ArrayToXml\ArrayToXml::convert($rsArr, 'getFullname');
     }
 
 
@@ -48,9 +48,9 @@ class TestSoap
         if (count($param) != 2) {
             throw new \SoapFault('1001EC', 'Invalid params');
         }
-        $rsArr = ['Reply' => ['SessionId' => join($param) . '-loggedin']];
+        $rsArr = ['SessionId' => join($param) . '-loggedin'];
 
-        return \Spatie\ArrayToXml\ArrayToXml::convert($rsArr);
+        return \Spatie\ArrayToXml\ArrayToXml::convert($rsArr, 'login');
     }
 
     /**
@@ -66,9 +66,9 @@ class TestSoap
         if (!$name) {
             throw new \SoapFault('1001EC', 'Invalid params');
         }
-        $rsArr = ['Reply' => ['Text' => 'Hello ' . $name]];
+        $rsArr = ['Text' => 'Hello ' . $name];
 
-        return \Spatie\ArrayToXml\ArrayToXml::convert($rsArr);
+        return \Spatie\ArrayToXml\ArrayToXml::convert($rsArr, 'sayHello');
     }
 
 }

@@ -2,7 +2,8 @@
   "license": "MIT",
   "require": {
     "zendframework/zend-soap": "~2.7",
-    "spatie/array-to-xml": "~2.7"
+    "spatie/array-to-xml": "~2.7",
+    "ramsey/uuid": "^3.7"
   },
   "require-dev": {
   },
