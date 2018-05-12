@@ -31,7 +31,7 @@ function makeResult($uuid4, $eTime, $response)
 </ResponseHeader>
 </SOAP-ENV:Header>
 <SOAP-ENV:Body>
-' . $response . '
+<login><SessionId>asdasad</SessionId></login>
 </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>';
     return $result;
