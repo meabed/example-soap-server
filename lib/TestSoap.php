@@ -48,7 +48,7 @@ class TestSoap
         if (count($param) != 2) {
             throw new \SoapFault('1001EC', 'Invalid params');
         }
-        $rsArr = ['SessionId' => join($param) . '-loggedin'];
+        $rsArr = ['SessionId' => join('', $param) . '-loggedin'];
 
         return \Spatie\ArrayToXml\ArrayToXml::convert($rsArr, 'login');
     }
