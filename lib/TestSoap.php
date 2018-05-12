@@ -78,7 +78,7 @@ class TestSoap
      * @return string
      * @throws SoapFault
      */
-    public function echoText($session, $text)
+    public function EchoText($session, $text)
     {
         $this->validateSession($session);
         if (!$text) {
