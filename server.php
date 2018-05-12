@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/lib/TestSoap.php';
+header('Content-Type: application/xml');
 
 ini_set("soap.wsdl_cache_enabled", 1);
 
@@ -49,6 +50,5 @@ function makeResult($uuid4, $eTime, $response)
 
 }
 
-header('Content-Type: application/xml');
 echo makeResult($uuid4->toString(), $eTime, $response);
 exit;
