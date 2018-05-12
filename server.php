@@ -46,5 +46,6 @@ function makeResult($uuid4, $eTime, $response)
 }
 
 header('Content-Type: application/xml');
-echo makeResult($uuid4->toString(), $eTime, $response);
+echo $response;
+// echo makeResult($uuid4->toString(), $eTime, $response);
 exit;
