@@ -21,19 +21,19 @@ class TestSoap
      * @param string $session session from login method
      * @param string $firstName user firstname
      * @param string $lastName user lastname
-     * @return array
+     * @return GetFullNameResponse
      * @throws SoapFault
      */
-    public function GetFullname($session, $firstName, $lastName)
+    public function GetFullName($session, $firstName, $lastName)
     {
         $this->validateSession($session);
         if (!$firstName || !$lastName) {
             throw new \SoapFault('1001EC', 'Invalid params');
         }
 
-        $rsArr = ['Fullname' => join(' ', [$firstName, $lastName])];
-
-        return $rsArr;
+        $rs = new GetFullNameResponse();
+        $rs->FullName = join(' ', [$firstName, $lastName]);
+        return $rs;
     }
 
 
@@ -57,7 +57,7 @@ class TestSoap
      * Say Hello!
      * @param string $session session from login method
      * @param string $name name
-     * @return array
+     * @return SayHelloResponse
      * @throws SoapFault
      */
     public function SayHello($session, $name)
@@ -66,9 +66,9 @@ class TestSoap
         if (!$name) {
             throw new \SoapFault('1001EC', 'Invalid params');
         }
-        $rsArr = ['Text' => 'Hello ' . $name];
-
-        return $rsArr;
+        $rs = new SayHelloResponse();
+        $rs->Text = 'Hello ' . $name;
+        return $rs;
     }
 
 }
@@ -82,4 +82,26 @@ class LoginResponse
      * @access public
      */
     public $SessionId;
+}
+
+class SayHelloResponse
+{
+    /**
+     * Text
+     *
+     * @var string
+     * @access public
+     */
+    public $Text;
+}
+
+class GetFullNameResponse
+{
+    /**
+     * FullName
+     *
+     * @var string
+     * @access public
+     */
+    public $FullName;
 }
