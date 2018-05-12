@@ -24,7 +24,7 @@ class TestSoap
      * @return array
      * @throws SoapFault
      */
-    public function getFullname($session, $firstName, $lastName)
+    public function GetFullname($session, $firstName, $lastName)
     {
         $this->validateSession($session);
         if (!$firstName || !$lastName) {
@@ -40,17 +40,17 @@ class TestSoap
     /**
      * Generate webservice session from login info
      * @param array $param login param [username,password]
-     * @return array
+     * @return LoginResponse
      * @throws SoapFault
      */
-    public function login($param = [])
+    public function Login($param = [])
     {
         if (count($param) != 2) {
             throw new \SoapFault('1001EC', 'Invalid params');
         }
-        $rsArr = ['SessionId' => join('', $param) . '-loggedin'];
-
-        return $rsArr;
+        $rs = new LoginResponse();
+        $rs->SessionId = join('', $param) . '-loggedin';
+        return $rs;
     }
 
     /**
@@ -60,7 +60,7 @@ class TestSoap
      * @return array
      * @throws SoapFault
      */
-    public function sayHello($session, $name)
+    public function SayHello($session, $name)
     {
         $this->validateSession($session);
         if (!$name) {
@@ -71,4 +71,15 @@ class TestSoap
         return $rsArr;
     }
 
+}
+
+class LoginResponse
+{
+    /**
+     * SessionId
+     *
+     * @var string
+     * @access public
+     */
+    public $SessionId;
 }
