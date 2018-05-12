@@ -21,7 +21,7 @@ class TestSoap
      * @param string $session session from login method
      * @param string $firstName user firstname
      * @param string $lastName user lastname
-     * @return mixed
+     * @return array
      * @throws SoapFault
      */
     public function getFullname($session, $firstName, $lastName)
@@ -40,7 +40,7 @@ class TestSoap
     /**
      * Generate webservice session from login info
      * @param array $param login param [username,password]
-     * @return mixed
+     * @return array
      * @throws SoapFault
      */
     public function login($param = [])
@@ -57,7 +57,7 @@ class TestSoap
      * Say Hello!
      * @param string $session session from login method
      * @param string $name name
-     * @return mixed
+     * @return array
      * @throws SoapFault
      */
     public function sayHello($session, $name)
