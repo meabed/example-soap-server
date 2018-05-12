@@ -1,7 +1,6 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/lib/TestSoap.php';
-header('Content-Type: application/xml');
 
 ini_set("soap.wsdl_cache_enabled", 1);
 
@@ -18,8 +17,13 @@ $response = $soap->handle();
 $response = str_ireplace(['<?xml version="1.0"?>', '<?xml version="1.0" encoding="UTF-8"?>'], '', $response);
 
 
-echo $response;
+if (!headers_sent()) {
+    header('Content-Type: application/xml');
+}
+
+echo '<login>' . $response . '</login>';
 exit;
+
 $time_end = microtime(true);
 $eTime = ($time_end - $time_start);
 
