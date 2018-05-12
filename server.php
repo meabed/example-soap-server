@@ -33,8 +33,6 @@ function makeResult($uuid4, $eTime, $response)
 </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>';
 
-    return $result;
-
     // pretty xml
     $dom = new \DOMDocument();
     $dom->preserveWhiteSpace = false;
