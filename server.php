@@ -16,6 +16,9 @@ $response = $soap->handle();
 
 $response = str_ireplace(['<?xml version="1.0"?>', '<?xml version="1.0" encoding="UTF-8"?>'], '', $response);
 
+
+var_dump($response);exit;
+
 $time_end = microtime(true);
 $eTime = ($time_end - $time_start);
 
