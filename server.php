@@ -2,7 +2,7 @@
 require __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/lib/TestSoap.php';
 
-ini_set("soap.wsdl_cache_enabled", 0);
+ini_set("soap.wsdl_cache_enabled", 1);
 ini_set("soap.wsdl_cache_ttl", 600);
 
 $siteURL = 'http' . (empty($_SERVER['HTTPS']) ? '' : 's') . '://' . $_SERVER['HTTP_HOST'] . '/';
