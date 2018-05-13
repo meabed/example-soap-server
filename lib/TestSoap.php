@@ -1,5 +1,6 @@
 <?php
 
+namespace Lib;
 /**
  * lib/TestSoap.php
  */
@@ -7,7 +8,7 @@ class TestSoap
 {
     /**
      * @param $session
-     * @throws SoapFault
+     * @throws \SoapFault
      */
     private function validateSession($session)
     {
@@ -21,8 +22,8 @@ class TestSoap
      * @param string $session session from login method
      * @param string $firstName user firstname
      * @param string $lastName user lastname
-     * @return GetFullNameResponse|SoapFault
-     * @throws SoapFault
+     * @return GetFullNameResponse|\SoapFault
+     * @throws \SoapFault
      */
     public function GetFullName($session, $firstName, $lastName)
     {
@@ -40,8 +41,8 @@ class TestSoap
     /**
      * Generate webservice session from login info
      * @param array $param login param [username,password]
-     * @return LoginResponse|SoapFault
-     * @throws SoapFault
+     * @return LoginResponse|\SoapFault
+     * @throws \SoapFault
      */
     public function Login($param = [])
     {
@@ -57,8 +58,8 @@ class TestSoap
      * Say Hello!
      * @param string $session session from login method
      * @param string $name name
-     * @return SayHelloResponse|SoapFault
-     * @throws SoapFault
+     * @return SayHelloResponse|\SoapFault
+     * @throws \SoapFault
      */
     public function SayHello($session, $name)
     {
@@ -76,7 +77,7 @@ class TestSoap
      * @param string $session session from login method
      * @param string $text $text
      * @return string
-     * @throws SoapFault
+     * @throws \SoapFault
      */
     public function EchoText($session, $text)
     {

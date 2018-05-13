@@ -11,5 +11,8 @@
     "process-timeout": 100000
   },
   "autoload": {
+    "psr-4": {
+      "Lib\\": "lib"
+    }
   }
 }
