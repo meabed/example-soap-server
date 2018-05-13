@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/lib/TestSoap.php';
+require __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../lib/TestSoap.php';
 
 ini_set("soap.wsdl_cache_enabled", 1);
 ini_set("soap.wsdl_cache_ttl", 600);
