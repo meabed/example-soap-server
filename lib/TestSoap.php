@@ -22,7 +22,7 @@ class TestSoap
      * @param string $session session from login method
      * @param string $firstName user firstname
      * @param string $lastName user lastname
-     * @return GetFullNameResponse|\SoapFault
+     * @return \Lib\GetFullNameResponse|\SoapFault
      * @throws \SoapFault
      */
     public function GetFullName($session, $firstName, $lastName)
@@ -41,7 +41,7 @@ class TestSoap
     /**
      * Generate webservice session from login info
      * @param array $param login param [username,password]
-     * @return LoginResponse|\SoapFault
+     * @return \Lib\LoginResponse|\SoapFault
      * @throws \SoapFault
      */
     public function Login($param = [])
@@ -58,7 +58,7 @@ class TestSoap
      * Say Hello!
      * @param string $session session from login method
      * @param string $name name
-     * @return SayHelloResponse|\SoapFault
+     * @return \Lib\SayHelloResponse|\SoapFault
      * @throws \SoapFault
      */
     public function SayHello($session, $name)
@@ -88,56 +88,4 @@ class TestSoap
         return $text;
     }
 
-}
-
-class FaultResponse
-{
-    /**
-     * Fault Code
-     *
-     * @var string
-     * @access public
-     */
-    public $Code;
-
-    /**
-     * Fault Message
-     *
-     * @var string
-     * @access public
-     */
-    public $Message;
-}
-
-class LoginResponse
-{
-    /**
-     * SessionId
-     *
-     * @var string
-     * @access public
-     */
-    public $SessionId;
-}
-
-class SayHelloResponse
-{
-    /**
-     * Text
-     *
-     * @var string
-     * @access public
-     */
-    public $Text;
-}
-
-class GetFullNameResponse
-{
-    /**
-     * FullName
-     *
-     * @var string
-     * @access public
-     */
-    public $FullName;
 }
