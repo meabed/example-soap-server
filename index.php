@@ -1,7 +1,7 @@
-Nothing here
-<br>
-Heroku deployed:
-<br>
+# Example Soap server
+
+Deployed on herokuapp:
+
 https://whispering-meadow-99755.herokuapp.com/wsdl.php
-<br>
+
 https://whispering-meadow-99755.herokuapp.com/server.php
