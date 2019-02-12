@@ -1,6 +1,9 @@
 {
   "license": "MIT",
   "require": {
+    "php": ">=7.2",
+    "ext-soap": "*",
+    "ext-curl": "*",
     "zendframework/zend-soap": "~2.7",
     "spatie/array-to-xml": "~2.7",
     "ramsey/uuid": "^3.7"
@@ -8,7 +11,10 @@
   "require-dev": {
   },
   "config": {
-    "process-timeout": 100000
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "process-timeout": 1000000
   },
   "autoload": {
     "psr-4": {
